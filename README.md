@@ -18,8 +18,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 - Migrate database<br />
 alembic upgrade head
-- Run command<br />
+- Run server by command<br />
 uvicorn app.main:app --reload  
+- Load sample data <br />
 
 # In future
 - import and delete samples data by simple command 

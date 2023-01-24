@@ -22,7 +22,7 @@ def load_json_data(file_name: str) -> list:
 
 
 @router.post("/add", status_code=status.HTTP_200_OK)
-def add_authors_sample_data(db:Session = Depends(get_db)):
+def add_sample_data(db:Session = Depends(get_db)):
     try:
         data_json = load_json_data("authors.json")
         for item in data_json:
@@ -44,7 +44,7 @@ def add_authors_sample_data(db:Session = Depends(get_db)):
 
 
 @router.delete("/delete", status_code=status.HTTP_200_OK)
-def delete_data(db:Session=Depends(get_db)):
+def delete_sample_data(db:Session=Depends(get_db)):
     """Delate data form database"""
     try:
         db.execute('DELETE FROM books')
