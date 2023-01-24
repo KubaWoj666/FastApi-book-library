@@ -22,8 +22,6 @@ alembic upgrade head
 uvicorn app.main:app --reload  
 - Load sample data <br />
 
-# In future
-- import and delete samples data by simple command 
 
 # Tests (in future)
 In order to execute tests located in tests<br /> 
