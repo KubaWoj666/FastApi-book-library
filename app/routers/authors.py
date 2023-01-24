@@ -1,11 +1,11 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Response
+from fastapi import APIRouter, Depends, HTTPException, status
 from .. import models, schemas, oauth2
 from ..database import get_db
 from sqlalchemy.orm import Session
-from sqlalchemy import func
 from typing import List
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
+
 
 
 
@@ -13,6 +13,7 @@ router = APIRouter(
     prefix="/author",
     tags=["Authors"]
 )
+
 
 
 @router.get('/', status_code=status.HTTP_200_OK, response_model=List[schemas.AuthorsSchema])
@@ -84,3 +85,6 @@ def delete_author(id: int, db:Session=Depends(get_db),  current_user:int=Depends
         "success" : True,
         "message": f"Author with id {id} successful deleted"
     })
+
+
+

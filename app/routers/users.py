@@ -1,10 +1,8 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Response
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from .. import models, schemas, oauth2, utils
 from ..database import get_db
 from sqlalchemy.orm import Session
-from sqlalchemy import func
-from typing import List
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy.exc import IntegrityError
@@ -78,6 +76,7 @@ def create_user(user:schemas.UserCreate, db:Session=Depends(get_db)):
 def update_user_data(update_user:schemas.UpdateUserData ,current_user:int = Depends(oauth2.get_current_user), db:Session=Depends(get_db,)):
     user_query = db.query(models.User).filter(models.User.id == current_user.id)
     user = user_query.first()
+    
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"no user{user.id}")
 

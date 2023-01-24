@@ -1,8 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Response
+from fastapi import APIRouter, Depends, HTTPException, status
 from .. import models, schemas, oauth2
 from ..database import get_db
 from sqlalchemy.orm import Session
-from sqlalchemy import func
 from typing import List
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
@@ -135,3 +134,5 @@ def delete_book(book_id:int, db:Session=Depends(get_db), current_user:int=Depend
         "success": True,
         "message": f"Successful delete book with id {book_id}"
     })
+
+
